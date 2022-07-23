@@ -37,7 +37,7 @@ describe('POST /take', () => {
 
   it('should return 429 HTTP error if the quota has been exceeded', async () => {
     const tokens = 0;
-    const stub = sinon.stub(rateLimitService, 'take').returns(tokens);
+    sinon.stub(rateLimitService, 'take').returns(tokens);
 
     const requestBody = {
       method: 'GET',
@@ -52,7 +52,7 @@ describe('POST /take', () => {
 
   it('should return 404 HTTP error if the endpoint does not exist', async () => {
     const tokens = null;
-    const stub = sinon.stub(rateLimitService, 'take').returns(tokens);
+    sinon.stub(rateLimitService, 'take').returns(tokens);
 
     const requestBody = {
       method: 'GET',
