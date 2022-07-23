@@ -3,7 +3,7 @@ const swaggerUi = require('swagger-ui-express');
 const validator = require('express-joi-validation').createValidator({});
 
 const controller = require('./controller');
-const swaggerDocument = require('./swagger.json');
+const swaggerDocument = require('../swagger.json');
 const takeRequestSchema = require('./schemas/take-request.schema');
 
 const app = express();
