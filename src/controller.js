@@ -1,6 +1,11 @@
 const { StatusCodes } = require('http-status-codes');
 
 const take = async (req, res) => {
+  const {
+    method,
+    endpoint,
+  } = req.body;
+
   const tokens = 42; // TODO: Implement
 
   if (tokens === 0) {
