@@ -1,5 +1,3 @@
-const rateLimitRepository = require('../repositories/rate-limit.repository');
-
 const config = require('../config.json');
 
 class RateLimitService {
@@ -12,13 +10,13 @@ class RateLimitService {
   }
 
   getRateLimit(endpoint) {
-    const bucket = this.buckets[]
-    const rateLimit = rateLimitRepository.getRateLimit(endpoint);
+    const bucket = this.buckets[endpoint];
 
-    
+    if (!bucket) {
+      return null;
+    }
 
-    // TODO: Get real tokens from token bucket
-    return rateLimit.burst;
+    return bucket.take();
   }
 }
 
