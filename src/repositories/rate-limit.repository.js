@@ -2,13 +2,13 @@ const config = require('./config.json');
 
 class RateLimitRepository {
     constructor(rateLimitsPerEndpoint) {
-        this.rateLimits = rateLimitsPerEndpoint.reduce((prev, current) => {
+        this.rateLimits = rateLimitsPerEndpoint.reduce((prev, current) => ({
             ...prev,
             [current.endpoint]: {
                 burst: current.burst,
                 sustained: current.sustained,
             }
-        }, {});
+        }), {});
     }
 
     getRateLimit(endpoint) {
