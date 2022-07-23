@@ -22,7 +22,7 @@ describe('POST /take', () => {
 
   it('should return OK if the quota has not been exceeded', async () => {
     const tokens = 5;
-    const stub = sinon.stub(rateLimitService, 'take').returns(tokens);
+    sinon.stub(rateLimitService, 'take').returns(tokens);
 
     const requestBody = {
       method: 'GET',
