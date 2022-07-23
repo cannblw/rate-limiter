@@ -1,12 +1,19 @@
-const getHello = (req, res) => {
-  res.send('hello world\n');
-};
+const { StatusCodes } = require('http-status-codes');
 
-const postHello = (req, res) => {
-  res.status(200).send(`hello ${req.body.name}\n`);
+const take = async (req, res) => {
+  const tokens = 42; // TODO: Implement
+
+  if (tokens === 0) {
+    res.status(StatusCodes.TOO_MANY_REQUESTS);
+  } else {
+    res.status(StatusCodes.OK);
+  }
+
+  return res.send({
+    tokens,
+  });
 };
 
 module.exports = {
-  getHello,
-  postHello,
+  take,
 };
