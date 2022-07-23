@@ -10,24 +10,16 @@
       "name": "API"
     }
   ],
-  "schemes": [
-    "http"
-  ],
+  "schemes": ["http", "https"],
   "paths": {
     "/take": {
       "post": {
-        "tags": [
-          "API"
-        ],
+        "tags": ["API"],
         "summary": "Check if the request limit has been exceeded and consume one request token",
         "description": "",
         "operationId": "consumeToken",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
         "parameters": [
           {
             "in": "body",
@@ -69,18 +61,15 @@
   "definitions": {
     "GetTokensRequest": {
       "type": "object",
-      "required": [
-        "method",
-        "endpoint"
-      ],
+      "required": ["method", "endpoint"],
       "properties": {
         "method": {
           "type": "string",
-          "format": "GET"
+          "example": "GET"
         },
         "endpoint": {
           "type": "string",
-          "example": "GET /user/:id"
+          "example": "/user/:id"
         }
       }
     }
