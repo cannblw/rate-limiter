@@ -2,10 +2,7 @@ const { StatusCodes } = require('http-status-codes');
 const rateLimitService = require('./services/rate-limit.service');
 
 const take = (req, res) => {
-  const {
-    method,
-    endpoint,
-  } = req.body;
+  const { method, endpoint } = req.body;
 
   const template = `${method} ${endpoint}`;
 
