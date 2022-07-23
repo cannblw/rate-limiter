@@ -6,7 +6,7 @@ const take = (req, res) => {
 
   const template = `${method} ${endpoint}`;
 
-  const tokens = rateLimitService.getRateLimit(template);
+  const tokens = rateLimitService.take(template);
 
   if (tokens === 0) {
     res.status(StatusCodes.TOO_MANY_REQUESTS);

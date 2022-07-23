@@ -10,7 +10,7 @@ class RateLimitService {
     }
   }
 
-  getRateLimit(endpoint) {
+  take(endpoint) {
     const bucket = this.buckets[endpoint];
 
     if (!bucket) {
