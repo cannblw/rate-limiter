@@ -1,6 +1,6 @@
 const chai = require('chai');
 
-const TokenBucket = require('../../../src/domain/token-bucket');
+const TokenBucket = require('../../src/domain/token-bucket');
 
 const { expect } = chai;
 
