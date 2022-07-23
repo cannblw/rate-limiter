@@ -12,5 +12,8 @@
   "scripts": {
     "start": "nodemon ./src/main.js",
     "test": "mocha ./specs/**/*.js"
+  },
+  "devDependencies": {
+    "prettier": "2.7.1"
   }
 }
