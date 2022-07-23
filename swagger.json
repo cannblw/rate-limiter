@@ -53,6 +53,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "The requested endpoint was not found"
           }
         }
       }
