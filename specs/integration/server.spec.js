@@ -20,7 +20,7 @@ describe('POST /take', () => {
     sandbox.restore();
   });
 
-  it('should get ', async () => {
+  it('should return OK if the quota has not been exceeded', async () => {
     const tokens = 5;
     const stub = sinon.stub(rateLimitService, 'take').returns(tokens);
 
