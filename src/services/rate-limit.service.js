@@ -1,3 +1,4 @@
+const TokenBucket = require('../domain/token-bucket');
 const config = require('../config.json');
 
 class RateLimitService {

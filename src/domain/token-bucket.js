@@ -1,11 +1,12 @@
 class TokenBucket {
-    constructor(burst, sustained) {
-        this.burst = burst;
-        this.sustained = sustained;
-    }
+  constructor(burst, sustained) {
+    this.quantity = burst;
+    this.sustained = sustained;
+  }
 
-    take() {
-        // TODO: Take tokens and return remaining
-        return 42;
-    }
+  take() {
+    return this.quantity > 0 ? --this.quantity : 0;
+  }
 }
+
+module.exports = TokenBucket;
