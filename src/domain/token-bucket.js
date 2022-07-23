@@ -1,7 +1,11 @@
+const MINUTES_PER_SECOND = 60;
+const MILLIS_PER_SECOND = 1000;
+
 class TokenBucket {
-  constructor(maxTokens, sustained) {
+  constructor(maxTokens, sustainedTokensPerMinute) {
     this.maxTokens = maxTokens;
-    this.sustainedTokens = sustained;
+    this.sustainedTokensPerMilli =
+      sustained / MINUTES_PER_SECOND / MILLIS_PER_SECOND;
 
     this.currentTokens = maxTokens;
     this.lastRefillDate = Date.now();
@@ -16,16 +20,16 @@ class TokenBucket {
   refill() {
     const currentRefillDate = Date.now();
     const millisFromLastRefill = currentRefillDate - this.lastRefillDate;
-    const refillsPerMillisecond = this.sustained / 1000;
 
     const tokensToRefill = Math.floor(
-      millisFromLastRefill * refillsPerMillisecond
+      millisFromLastRefill * this.sustainedTokensPerMilli
     );
 
     this.currentTokens = Math.min(
       this.maxTokens,
       this.currentTokens + tokensToRefill
     );
+
     this.lastRefillDate = currentRefillDate;
   }
 }
