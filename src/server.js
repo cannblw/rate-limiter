@@ -1,14 +1,10 @@
 const express = require('express');
+const controller = require('./controller');
 
 const app = express();
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('hello world\n');
-});
-
-app.post('/', (req, res) => {
-  res.status(200).send(`hello ${req.body.name}\n`);
-});
+app.get('/', controller.getHello);
+app.post('/', controller.postHello);
 
 module.exports = app;
