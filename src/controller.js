@@ -1,12 +1,15 @@
 const { StatusCodes } = require('http-status-codes');
+const rateLimitService = require('./services/rate-limit.service');
 
-const take = async (req, res) => {
+const take = (req, res) => {
   const {
     method,
     endpoint,
   } = req.body;
 
-  const tokens = 42; // TODO: Implement
+  const template = `${method} ${endpoint}`;
+
+  const tokens = rateLimitService.getRateLimit(template);
 
   if (tokens === 0) {
     res.status(StatusCodes.TOO_MANY_REQUESTS);

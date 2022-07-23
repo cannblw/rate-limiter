@@ -1,4 +1,4 @@
-const config = require('./config.json');
+const config = require('../config.json');
 
 class RateLimitRepository {
     constructor(rateLimitsPerEndpoint) {
@@ -12,7 +12,7 @@ class RateLimitRepository {
     }
 
     getRateLimit(endpoint) {
-        const limit = this.rateLimits[endpoint] ?? null;
+        return this.rateLimits[endpoint] ?? null;
     }
 }
 
