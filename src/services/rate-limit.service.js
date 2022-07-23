@@ -2,10 +2,10 @@ const TokenBucket = require('../domain/token-bucket');
 const config = require('../config.json');
 
 class RateLimitService {
-  constructor() {
+  constructor(rateLimitsPerEndpoint) {
     this.buckets = {};
 
-    for (let item of config.rateLimitsPerEndpoint) {
+    for (let item of rateLimitsPerEndpoint) {
       this.buckets[item.endpoint] = new TokenBucket(item.burst, item.sustained);
     }
   }
@@ -21,6 +21,6 @@ class RateLimitService {
   }
 }
 
-const rateLimitService = new RateLimitService();
+const rateLimitService = new RateLimitService(config.rateLimitsPerEndpoint);
 
 module.exports = rateLimitService;
