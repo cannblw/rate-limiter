@@ -1,5 +1,5 @@
 const { StatusCodes } = require('http-status-codes');
-const rateLimitService = require('./services/rate-limit.service');
+const { rateLimitService } = require('./services');
 
 const take = (req, res) => {
   const { method, endpoint } = req.body;

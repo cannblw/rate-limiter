@@ -1,5 +1,4 @@
 const TokenBucket = require('../domain/token-bucket');
-const config = require('../config.json');
 
 class RateLimitService {
   constructor(rateLimitsPerEndpoint) {
@@ -21,6 +20,4 @@ class RateLimitService {
   }
 }
 
-const rateLimitService = new RateLimitService(config.rateLimitsPerEndpoint);
-
-module.exports = rateLimitService;
+module.exports = RateLimitService;
