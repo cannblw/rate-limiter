@@ -1,7 +1,7 @@
 const chai = require('chai');
 const Joi = require('joi');
 
-const config = require('../src/config.json');
+const config = require('../../src/config.json');
 
 const { expect } = chai;
 

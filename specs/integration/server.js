@@ -2,7 +2,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const { StatusCodes } = require('http-status-codes');
 
-const app = require('../src/server');
+const app = require('../../src/server');
 
 chai.use(chaiHttp);
 
