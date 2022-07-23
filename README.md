@@ -5,7 +5,7 @@
 
 ## How to add endpoints
 
-You can edit the `config.json` under  `src/` file to add new endpoints.
+You can edit the `config.json` under `src/` file to add new endpoints.
 
 - **endpoint:** The full endpoint template, including the HTTP method. Example: `GET /user/:id`.
 - **burst**: The maximum capacity of the token bucket.
@@ -24,10 +24,3 @@ The project has a Swagger documentation that can be accessed on: `http://{BASE_U
 ## Limitations
 
 This project does not differentiate who is the caller of the service, so it only works on an endpoint basis, without considering the IP of the caller.
-
-## Other things I would do in case I had more time
-- Add more tests: I would test, for example, the RateLimitService. It already takes the config as a parameter, so we could check if the buckets have been created correctly for each endpoint, etc.
-
-- Validate the request body of the /take endpoint: I already installed Joi and used it to test the shape of the config.json file. It shouldn't be too complicated to install the express-joi-validation middleware and use it to validate the body.
-
-- Unify the validation of the request body with the Swagger documentation. There are projects [like this one](https://www.npmjs.com/package/express-joi-swagger) on npm (although this particular one is not very mature).
