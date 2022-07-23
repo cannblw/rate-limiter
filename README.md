@@ -24,3 +24,5 @@ The project has a Swagger documentation that can be accessed on: `http://{BASE_U
 ## Limitations
 
 This project does not differentiate who is the caller of the service, so it only works on an endpoint basis, without considering the IP of the caller.
+
+Another limitation would be that it only works as a single instance. If this service were to receive a big quantity of requests and we wanted to scale it, we would need to store the token buckets somewhere else, for example, in a Redis instance. The good thing about refilling the buckets when receiving a request (instead of using setInterval) is that we would reduce the number of write requests in case we wanted to scale it. Redis, being in-memory, allows to have important read speeds, so it would be a good candidate for this problem.
