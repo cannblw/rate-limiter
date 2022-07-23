@@ -17,6 +17,10 @@ You can edit the `config.json` under  `src/` file to add new endpoints.
 2. Create a `.env` file with the contents of `.env.example` and configure the environment variables if necessary.
 3. Run the project: `npm start`.
 
+## How to access the the API documentation
+
+The project has a Swagger documentation that can be accessed on: `http://{BASE_URL}/api-docs`
+
 ## Limitations
 
 This project does not differentiate who is the caller of the service, so it only works on an endpoint basis, without considering the IP of the caller.
