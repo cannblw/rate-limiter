@@ -13,6 +13,8 @@ const take = (req, res) => {
 
   if (tokens === 0) {
     res.status(StatusCodes.TOO_MANY_REQUESTS);
+  } else if (!tokens) {
+    res.status(StatusCodes.NOT_FOUND);
   } else {
     res.status(StatusCodes.OK);
   }
