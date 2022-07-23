@@ -18,7 +18,6 @@ describe('Rate limiter config', () => {
     });
 
     const validationResults = schema.validate(config);
-    console.log(validationResults);
 
     expect(validationResults.error).to.be.undefined;
   });
