@@ -11,9 +11,15 @@
   },
   "scripts": {
     "start": "nodemon ./src/main.js",
-    "test": "mocha ./specs/**/*.js"
+    "test": "mocha ./specs/**/*.js",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "devDependencies": {
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "prettier": "2.7.1"
   }
 }
