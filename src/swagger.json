@@ -1,0 +1,88 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "**Simple rate limiter** is a microservice that can be used to check if a particular endpoint is receiving too many requests using the [Token bucket algorithm ](https://en.wikipedia.org/wiki/Token_bucket). This service does **not** block any request: it only provides information about the limits of a given list of endpoints.",
+    "version": "1.0.0",
+    "title": "Simple Rate Limiter"
+  },
+  "tags": [
+    {
+      "name": "API"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/take": {
+      "post": {
+        "tags": [
+          "API"
+        ],
+        "summary": "Check if the request limit has been exceeded and consume one request token",
+        "description": "",
+        "operationId": "consumeToken",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Endpoint template with the HTTP method",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetTokensRequest"
+            }
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "The requested endpoint template does not exist",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tokens": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "The endpoint has exceeded the number of allowed requests",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tokens": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GetTokensRequest": {
+      "type": "object",
+      "required": [
+        "method",
+        "endpoint"
+      ],
+      "properties": {
+        "method": {
+          "type": "string",
+          "format": "GET"
+        },
+        "endpoint": {
+          "type": "string",
+          "example": "GET /user/:id"
+        }
+      }
+    }
+  }
+}
