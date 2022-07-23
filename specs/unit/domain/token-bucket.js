@@ -16,4 +16,28 @@ describe('Token bucket', () => {
     expect(firstResult).to.equal(maxTokens - 1);
     expect(secondResult).to.equal(maxTokens - 2);
   });
+
+  it('should not go under 0 tokens', () => {
+    const maxTokens = 0;
+    const sustainedTokensPerMinute = 0;
+    const tokenBucket = new TokenBucket(maxTokens, sustainedTokensPerMinute);
+
+    const tokens = tokenBucket.take();
+
+    expect(tokens).to.equal(0);
+  });
+
+  it('should not go over the max quantity of tokens', (done) => {
+    const maxTokens = 10;
+    const sustainedTokensPerMinute = 600;
+    const waitSeconds = 1;
+    const tokenBucket = new TokenBucket(maxTokens, sustainedTokensPerMinute);
+
+    const tokens = tokenBucket.take();
+
+    setTimeout(() => {
+      expect(tokens).to.equal(maxTokens - 1);
+      done();
+    }, waitSeconds * 1000);
+  });
 });
