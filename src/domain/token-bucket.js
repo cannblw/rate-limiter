@@ -5,7 +5,7 @@ class TokenBucket {
   constructor(maxTokens, sustainedTokensPerMinute) {
     this.maxTokens = maxTokens;
     this.sustainedTokensPerMilli =
-      sustained / MINUTES_PER_SECOND / MILLIS_PER_SECOND;
+      sustainedTokensPerMinute / MINUTES_PER_SECOND / MILLIS_PER_SECOND;
 
     this.currentTokens = maxTokens;
     this.lastRefillDate = Date.now();
